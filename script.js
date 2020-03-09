@@ -1,4 +1,4 @@
-var vid, seekslider;
+var vid, seekslider, durtimetext, fullscreenbtn;;
 var video = document.querySelector('.video');
 var juice = document.querySelector('.orange-juice');
 var bar = document.querySelector('.orange-bar');
@@ -6,6 +6,7 @@ var btn = document.getElementById('play-pause');
 var orangeBar = document.getElementById('.orange-bar');
 var curtimetext = document.getElementById("curtimetext");
 var durtimetext = document.getElementById("durtimetext");
+
 
 function togglePlayPause() {
     if (video.paused) {
@@ -15,6 +16,11 @@ function togglePlayPause() {
         btn.className = 'play';
         video.pause();
     }
+}
+
+function clickPause() {
+    btn.className = 'play';
+    video.pause();
 }
 
 function scrub(e) {
@@ -43,7 +49,11 @@ function initializePlayer() {
     seekslider.addEventListener("change", vidSeek, false);
     volumeslider.addEventListener("change", setvolume, false);
     volumeslider = document.getElementById("volumeslider");
+
 }
+
+
+
 
 function vidSeek() {
     var seekto = vid.duration * (seekslider.value / 100);
@@ -74,7 +84,36 @@ function seektimeupdate() {
     durtimetext.innerHTML = durmins + ":" + dursecs;
 }
 
+
 function setvolume() {
     vid.volume = volumeslider.value / 100;
 }
 window.onload = initializePlayer;
+
+
+
+function toggleFullScreen() {
+    if (vid.requestFullScreen) {
+        vid.requestFullScreen();
+    } else if (vid.webkitRequestFullScreen) {
+        vid.webkitRequestFullScreen();
+    } else {
+        vid.mozRequestFullScreen();
+    }
+}
+
+window.onload = initializePlayer;
+var iconHide = document.querySelector(".icon");
+
+video.ontimeupdate = function() { myFunction() }
+
+function myFunction() {
+    // Display the current position of the video in a p element with id="demo"
+    document.getElementById("icon2").innerHTML = "<button style='background:red; border-radius: 35px; border:0; outline:0;' onclick='clickPause()'><a href='https://www.mps.it/' target='_blank'><img src='icon/banca.png' height='42' width='42'></button>";
+    if (video.currentTime > 5 && video.currentTime < 10) {
+        //video.pause();
+        icon2.style.display = "inline";
+    } else {
+        icon2.style.display = "none";
+    }
+}

@@ -11,75 +11,27 @@
     <link rel='stylesheet' href='style.css'>
     <title>Test Video Player</title>
 </head>
-<style>
-    input[type='range'] {
-        -webkit-appearance: none !important;
-        background: #000;
-        border: #666 01px solid;
-        border-radius: 3px;
-        height: 4px;
+<script>
+    function iconOn() {
+        var ciao = vid.currentTime;
+        if (vid.currentTime >= 20) {
+
+            alert(ciao);
+
+        }
     }
-    
-    input[type='range']::-webkit-slider-thumb {
-        -webkit-appearance: none !important;
-        background: #FFF;
-        height: 12px;
-        width: 12px;
-        border-radius: 100%;
-        cursor: pointer;
-    }
-    
-    input {
-        outline-style: none;
-        box-shadow: none;
-        border-color: transparent;
-    }
-</style>
+</script>
 
 <body>
     <script>
-        var durtimetext, vid, seekslider;
-
-        function initializePlayer() {
-            vid = document.querySelector(".video");
-            vid.addEventListener("timeupdate", seektimeupdate, false);
-            seekslider = document.querySelector(".orange-bar");
-            seekslider.addEventListener("change", vidSeek, false);
-        }
-
-        function vidSeek() {
-            var seekto = vid.duration * (seekslider.value / 100);
-            vid.currentTime = seekto;
-        }
-
-        function seektimeupdate() {
-            var nt = vid.currentTime * (100 / vid.duration);
-            seekslider.value = nt;
-            var curmins = Math.floor(vid.currentTime / 60);
-            var cursecs = Math.floor(vid.currentTime - curmins * 60);
-            var durmins = Math.floor(vid.duration / 60);
-            var dursecs = Math.floor(vid.duration - durmins * 60);
-            if (cursecs < 10) {
-                cursecs = "0" + cursecs;
-            }
-            if (dursecs < 10) {
-                dursecs = "0" + dursecs;
-            }
-            if (curmins < 10) {
-                curmins = "0" + curmins;
-            }
-            if (durmins < 10) {
-                durmins = "0" + durmins;
-            }
-
-            curtimetext.innerHTML = curmins + ":" + cursecs;
-            durtimetext.innerHTML = durmins + ":" + dursecs;
-        }
-        window.onload = initializePlayer;
     </script>
     <div id='container'>
+
         <div class="c-video">
+
             <video class="video" src="Video/La _perdita_occulta.mp4"></video>
+
+
             <div class="controls">
 
                 <div class="orange-bar" style="cursor: pointer;">
@@ -101,11 +53,16 @@
                 <div style="padding-top:20px; padding-left:20px;">
                     <span id="curtimetext" style="padding-top:20px; color:white">00:00</span><span id="curtimetext" style="padding-top:20px; color:white">&nbsp;/&nbsp;</span><span id="durtimetext" style="padding-top:20px; color:white">00:00</span>
                 </div>
+                <div class="fullscreenbtn" style="padding-top:10px; padding-left:20px; ">
+                    <button id="fullscreen" onclick="toggleFullScreen()" style="cursor: pointer;">[ &nbsp; ]</button>
+                </div>
             </div>
 
         </div>
     </div>
-
+    <div class="icon">
+        <p id="icon2" style="padding:25px; "></p>
+    </div>
 
     <script src="script.js "></script>
 </body>

@@ -32,6 +32,14 @@
     transition: all 0.2s;
 }
 
+.icon {
+    display: flex;
+    position: absolute;
+    top: 0;
+    flex-wrap: wrap;
+    background: transparent;
+}
+
 .images {
     padding: 10px;
 }
@@ -100,4 +108,36 @@
 .orange-juice {
     height: 10px;
     background-color: orangered;
+}
+
+input[type='range'] {
+    -webkit-appearance: none !important;
+    background: #000;
+    border: #666 01px solid;
+    border-radius: 3px;
+    height: 4px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background: #FFF;
+    height: 12px;
+    width: 12px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+input {
+    outline-style: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+#fullscreen {
+    outline-style: none;
+    box-shadow: none;
+    border-color: transparent;
+    font-size: 25px;
+    color: #FFF;
+    background: transparent;
 }
